@@ -7,6 +7,7 @@ const authRoutes = require('./routes/authRoutes');
 const { initialize } = require('passport');
 
 require('./models/user');
+require('./models/Survey');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI, {
@@ -18,6 +19,8 @@ mongoose.connect(keys.mongoURI, {
 
 
 const app = express();
+
+
 
 app.use(express.json());
 
@@ -32,6 +35,7 @@ app.use(passport.session());
 authRoutes(app);
 
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
