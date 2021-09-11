@@ -22,6 +22,7 @@ class SurveyForm extends Component{
     render() {
         return (
             <div className="container">
+                <h3 style={{fontWeight:50}}> Create survey </h3>
                 <form
                     onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}
                 >
